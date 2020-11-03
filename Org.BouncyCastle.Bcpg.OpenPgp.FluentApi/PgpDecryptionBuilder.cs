@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -79,14 +80,15 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
             }
 
             var stream = File.Open(outfilePath, FileMode.OpenOrCreate);
-
+            
             return WriteOutputTo(stream);
         }
 
         public PgpDecryptionBuilder WriteOutputTo(Stream outStream)
         {
-            if (OutStream != null)
-                throw new InvalidOperationException("stream to encrypt already specified");
+            //Console.WriteLine(outStream == null ? "null stream" : "not null stream");
+            //if (OutStream != null)
+            //    throw new InvalidOperationException("stream to encrypt already specified"); always, because initially set as new memorystream
 
             OutStream = outStream ?? throw new ArgumentNullException("outStream");
 

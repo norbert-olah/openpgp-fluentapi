@@ -10,12 +10,16 @@
     <PackageLicenseUrl>https://github.com/mohamedfarouk/openpgp-fluentapi/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/mohamedfarouk/openpgp-fluentapi</PackageProjectUrl>
     <Version>1.1.2</Version>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <AssemblyVersion>1.1.23.21020</AssemblyVersion>
+    <FileVersion>1.1.23.21020</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\breke\OneDrive\Xerox\Sync\VB Projects (linkelni)\C#\openpgp-fluentapi\Org.BouncyCastle.Bcpg.OpenPgp.FluentApi\Org.BouncyCastle.Bcpg.OpenPgp.FluentApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BouncyCastle.NetCore" Version="1.8.2" />
+    <PackageReference Include="BouncyCastle.NetCore" Version="1.8.8" />
   </ItemGroup>
 
 </Project>
