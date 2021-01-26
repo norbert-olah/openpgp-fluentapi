@@ -18,6 +18,7 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
 
         private FileInfo InFile;
         private FileInfo OutFile;
+        private bool outFileIsTemp = false;
 
         private List<Stream> PublicKeys;
         private List<PrivateKeyInfo> PrivateKeys;
@@ -63,7 +64,8 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
 
 
             var tempFile = Utils.CreateTempFile();
-
+            outFileIsTemp = true;
+            Debug.WriteLine($"TEMP FILE: {tempFile.FullName}");
             using (FileStream fs = tempFile.OpenWrite())
             {
                 inputStream.CopyTo(fs);
@@ -87,8 +89,12 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
             if (string.IsNullOrEmpty(outfilePath))
                 throw new ArgumentNullException("outfilePath");
 
-            if (!Uri.IsWellFormedUriString(outfilePath, UriKind.RelativeOrAbsolute))
+            //if (!Uri.IsWellFormedUriString(outfilePath, UriKind.RelativeOrAbsolute)) //BUG: throws exception for local file path, like c:\folder\file.ext
+            //    throw new ArgumentException("outfilePath", "malformed file path");
+            if (!Utils.IsUriValid(outfilePath))
+            {
                 throw new ArgumentException("outfilePath", "malformed file path");
+            }
 
             try
             {
@@ -226,12 +232,15 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
             if (OutFile == null)
             {
                 OutFile = Utils.CreateTempFile();
+                outFileIsTemp = true;
+                Debug.WriteLine($"TEMP FILE (no out name was given): {OutFile.FullName}");
             }
 
             return new PgpEncryptionTask
             {
                 InFile = InFile,
                 OutFile = OutFile,
+                OutFileIsTemp = outFileIsTemp,
                 PublicKeys = PublicKeys,
                 PrivateKeys = PrivateKeys,
                 Armor = Armor,

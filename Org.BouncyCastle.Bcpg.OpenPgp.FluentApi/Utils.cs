@@ -80,5 +80,12 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
 
             return tempFile;
         }
+
+        /// <summary>
+        /// better check for valid file Url, because it'll accept local file path, like c:\folder\file.txt
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        internal static bool IsUriValid(string source) => Uri.TryCreate(source, UriKind.Absolute, out _);
     }
 }

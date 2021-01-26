@@ -9,6 +9,7 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
     {
         internal FileInfo InFile;
         internal FileInfo OutFile;
+        internal bool OutFileIsTemp = false;
 
         internal List<Stream> PublicKeys;
         internal List<PrivateKeyInfo> PrivateKeys;
@@ -38,6 +39,18 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
         public Stream GetEncryptedStream()
         {
             return OutFile.OpenRead();
+        }
+
+
+        public bool DeleteTempFile()
+        {
+            //TODO: return true if file was removed, false if not a temp file or couldn't remove
+            if (OutFileIsTemp)
+            {
+                //TODO: 
+            }
+
+            return false;
         }
 
         #region PGP Encrypt Function

@@ -94,5 +94,12 @@
             </summary>
             <param name="keyID">key ID to look for.</param>
         </member>
+        <member name="M:Org.BouncyCastle.Bcpg.OpenPgp.FluentApi.Utils.IsUriValid(System.String)">
+            <summary>
+            better check for valid file Url, because it'll accept local file path, like c:\folder\file.txt
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

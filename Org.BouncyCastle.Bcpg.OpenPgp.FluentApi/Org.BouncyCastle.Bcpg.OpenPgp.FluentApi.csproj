@@ -3,19 +3,26 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>OpenPgp.FluentApi</PackageId>
-    <Authors>INSight</Authors>
-    <Company>INSight</Company>
+    <Authors></Authors>
+    <Company></Company>
     <Product>BouncyCastle.OpenPgp.FluentApi</Product>
     <Description>Friendly API for bouncy castle open pgp library</Description>
     <PackageLicenseUrl>https://github.com/mohamedfarouk/openpgp-fluentapi/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/mohamedfarouk/openpgp-fluentapi</PackageProjectUrl>
-    <Version>1.1.2</Version>
-    <AssemblyVersion>1.1.23.21020</AssemblyVersion>
-    <FileVersion>1.1.23.21020</FileVersion>
+    <PackageProjectUrl></PackageProjectUrl>
+    <Version>1.3</Version>
+    <AssemblyVersion>1.3.44.21026</AssemblyVersion>
+    <FileVersion>1.3.44.21026</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Users\breke\OneDrive\Xerox\Sync\VB Projects (linkelni)\C#\openpgp-fluentapi\Org.BouncyCastle.Bcpg.OpenPgp.FluentApi\Org.BouncyCastle.Bcpg.OpenPgp.FluentApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>

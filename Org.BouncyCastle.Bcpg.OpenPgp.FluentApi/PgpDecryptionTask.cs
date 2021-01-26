@@ -16,6 +16,7 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
         private SignatureStatus SignatureStatus { get; set; }
 
 
+
         public PgpDecryptionTask Run()
         {
             SignatureStatus = DecryptFile();
@@ -67,7 +68,7 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
                 //
                 PgpPrivateKey sKey = null;
                 PgpPublicKeyEncryptedData pbe = null;
-                
+
                 foreach (PgpPublicKeyEncryptedData pked in enc.GetEncryptedDataObjects())
                 {
                     sKey = FindPrivateKey(privateKeys, pked.KeyId);
@@ -120,10 +121,10 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
                     pgpObject = pgpObjectFactory.NextPgpObject();
                 }
 
-                if(pgpLiteralData == null)
+                if (pgpLiteralData == null)
                     throw new PgpLitralDataNotFound("couldn't find pgp literal data");
 
-                
+
 
                 if (pbe.IsIntegrityProtected())
                 {
@@ -155,7 +156,7 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
         {
             try
             {
-                
+
                 const int BUFFER_SIZE = 1 << 16; // should always be power of 2
 
                 SignatureStatus signatureStatus = SignatureStatus.Invalid;
@@ -209,10 +210,10 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
                 PgpKeyRingBundle pgpSec = new PgpKeyRingBundle(PgpUtilities.GetDecoderStream(keyInfo.PrivateKeyStream));
 
                 var keyRings = pgpSec.GetSecretKeyRings();
-                foreach(PgpSecretKeyRing keyRing in keyRings)
+                foreach (PgpSecretKeyRing keyRing in keyRings)
                 {
                     var pgpSecKeys = keyRing.GetSecretKeys();
-                    foreach(PgpSecretKey pgpSecKey in pgpSecKeys)
+                    foreach (PgpSecretKey pgpSecKey in pgpSecKeys)
                     {
                         var privateKey = pgpSecKey.ExtractPrivateKey(keyInfo.PrivateKeyPassword == null ? null : keyInfo.PrivateKeyPassword.ToCharArray());
                         PgpPrivateKeys.Add(privateKey);
