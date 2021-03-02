@@ -10,8 +10,8 @@
     <PackageLicenseUrl>https://github.com/mohamedfarouk/openpgp-fluentapi/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl></PackageProjectUrl>
     <Version>1.3</Version>
-    <AssemblyVersion>1.3.44.21026</AssemblyVersion>
-    <FileVersion>1.3.44.21026</FileVersion>
+    <AssemblyVersion>1.3.57.21061</AssemblyVersion>
+    <FileVersion>1.3.57.21061</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 

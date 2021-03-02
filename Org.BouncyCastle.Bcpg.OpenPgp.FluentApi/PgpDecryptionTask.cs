@@ -6,8 +6,10 @@ using System.IO;
 
 namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
 {
-    public class PgpDecryptionTask
+    public class PgpDecryptionTask: IDisposable
     {
+        private bool disposedValue;
+
         internal Stream InStream { get; set; }
         internal Stream OutStream { get; set; }
         internal List<PrivateKeyInfo> PrivateKeys { get; set; }
@@ -261,6 +263,37 @@ namespace Org.BouncyCastle.Bcpg.OpenPgp.FluentApi
             var privateKey = pgpPrivateKeys.FirstOrDefault(x => x.KeyId == keyId);
             return privateKey;
 
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                    InStream.Dispose();
+                    OutStream.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~PgpDecryptionTask()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
 
         #endregion
